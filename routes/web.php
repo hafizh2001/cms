@@ -11,10 +11,21 @@
 |
 */
 
-Route::get('/halaman', 'HomeController@getAll');
+
 Route::get('/about','AboutController@index');
 Route::get('/articles/{id}', 'ArticlesController@getID');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tampil', 'ArticlesController@index')->name('tampil');
+
+Route::get('/tambah/add','ArticlesController@add');
+Route::post('/tambah/create','ArticlesController@create');
+
+Route::get('/tampil/edit/{id}','ArticlesController@edit');
+Route::post('/edit/update/{id}','ArticlesController@update');
+
+Route::get('/tampil/delete/{id}','ArticleController@delete');
+
+
