@@ -9,17 +9,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/home">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link" href="/articles">Articles</a>
-        </li>
+        <li class="nav-item active <?php echo e(Route::is('home') ? 'active' : ''); ?>">
+        
+          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-display')): ?>
+          <a class="nav-link" href="<?php echo e(route('home')); ?>">Home</a>
+          <?php endif; ?>
+          </li>
+          <li class="nav-item <?php echo e(Route::is('about') ? 'active' : ''); ?>">
+          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user-display')): ?>
+          <a class="nav-link" href="<?php echo e(route('about')); ?>">About</a>
+          <?php endif; ?>
+          </li>
+
+        <li class="nav-item <?php echo e(Route::is('tampil') ? 'active' : ''); ?>">
+          <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('manage-articles')): ?>
+          <a class="nav-link" href="<?php echo e(route('tampil')); ?>">Kelola</a>
+          <?php endif; ?>
+          </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/tampil">Data</a>
         </li>

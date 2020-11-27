@@ -12,12 +12,15 @@
 */
 
 
-Route::get('/about','AboutController@index');
+Route::get('/about','AboutController@index')->name('about');
+
 Route::get('/articles/{id}', 'ArticlesController@getID');
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('manage');
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/tampil', 'ArticlesController@index')->name('tampil');
 
 Route::get('/tambah/add','ArticlesController@add');
